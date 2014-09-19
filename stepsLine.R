@@ -1,11 +1,11 @@
 # install_github("plotly", "ropensci", ref = "50f70b8")
 library (plotly)
 
-stepsLine <- function (filename = "Export.csv", username="caluchko", key="cqdk1g1p7k",
+stepsLine <- function (filename = "export.csv", username="caluchko", key="cqdk1g1p7k",
                        LOWESS = TRUE){
   p <- plotly(username="caluchko", key="cqdk1g1p7k")
   steps <- read.csv(filename, header = TRUE)
-  steps$date1 <- as.Date(steps[,1], format = "%m/%d/%y") # column of date values as date class
+  steps$date1 <- as.Date(steps[,1], format = "%m/%d/%Y") # column of date values as date class
   steps [,1] <- format(steps$date1, format = "%Y-%m-%d 00:00:00") # additional column of date values as character vector format readable to plot.ly API
   
   steps <- steps[steps[,2] != 0,] # removes all values of steps that equal zero
